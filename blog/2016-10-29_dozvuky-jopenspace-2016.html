@@ -1,0 +1,206 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs" xmlns:og="http://opengraphprotocol.org/schema/"><head><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/rainbow.min.css"/><link href="/css/style.css" rel="stylesheet"/><title>Dozvuky jOpenSpace - 2016 - Víťa Plšek</title><meta name="description" content="Letos konaná nekonference jOpenspace 2016 byla velmi povedená, sepsal jsem, co mne nejvíc zaujalo a na co mám v plánu se v dohldené době podívat."/><meta property="og:site_name" content="VitaPlsek.cz"/><meta property="og:type" content="article"/><meta property="og:description" content="Letos konaná nekonference jOpenspace 2016 byla velmi povedená, sepsal jsem, co mne nejvíc zaujalo a na co mám v plánu se v dohldené době podívat."/><meta property="article:author" content="http://www.vitaplsek.cz"/><meta property="og:image" content="http://www.vitaplsek.cz/images/vitaplsek.jpg"/><meta property="og:url" content="http://www.vitaplsek.cz/blog/2016-10-29_dozvuky-jopenspace-2016.html"/><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script><script>hljs.initHighlightingOnLoad()</script></head><body><div class="article-panel"><div class="panel-body"><div class="article-header"><h2>Víťa Plšek - Zápisky Java / Script vývojáře</h2><a href="/" class="btn btn-default">&larr; Zpět na úvodní stranu</a></div></div></div><div class="article-panel"><div class="panel-body"><h1>Dozvuky jOpenSpace - 2016</h1><p>29. října 2016</p><p>Dva víkendy zpátky proběhla akce tak znamenitá, že ji ještě zpracovávám. Letošní jOpenSpace byla opravdu nabitá informacemi, celkově 35 lightning talků ve dvou dnech a dva workshopy navrch mluví za vše.
+</p><p><img src="/images/2016-10-21/jopenspace-panorama.png" class="img-responsive img-rounded"/></p><h3>Co je to jOpenSpace</h3><p>jOpenSpace je nekonference, to znamená, že nemá přesně daný program či harmonogram.
+Od každého, kdo se chce zúčastnit se očekává že ostatní oblaží cca 10 minut dlouhým lightning talkem odměnou za to bude kolem sebe mít
+skupinu lidí velmi aktivních ve svém oboru.
+</p><h3>Jak to probíhalo</h3><p>Lepší recenzi než <a href="https://twitter.com/jopenspace" target="_blank">Jaroslav Holaň</a> bych asi nenapsal, tak si přečtěte tu <a href="http://www.jaroslavholan.com/2016/10/vyvojari-sobe-jopenspace.html" target="_blank">jeho</a>.
+Taky se můžete podívat na velmi podrobné zápisky ve formě <a href="http://jopenspace.cz/data/2016/notes/notes.pdf" target="_blank">myšlenkové mapy</a> od <a href="https://cz.linkedin.com/in/paveljetensky" target="_blank">Pavla Jetenského</a>.
+Záznamy budou následovat pravděpodobně v dohledné době.
+</p><p>Každý z lightning talků byl inspirativní, pokusím se zde vyzdvihnout ty, které se nejvíc dotýkají mého zaměření a inspirovali mě čím se v dohledné době bude zabývat.
+</p><p>Daly by se seskupit do několika částí: <strong>podpora vývoje</strong>, <strong>bezpečnost</strong>, <strong>backend</strong> a <strong>frontend</strong>.
+</p><h3>Podpora vývoje</h3><h4>Jakub Fojtl - Code your architecture</h4><p><strong><a href="https://twitter.com/jakubfojtl" target="_blank">Jakub Fojtl</a></strong> mluvil o tom, jak se stal z programátora architektem a že mu běžné analytické nástroje nevoní.
+S tím naprosto souhlasím i já, hledat změny v analytickém modelu mezi dvěma verzemi pro mě je vždycky utrpení, proto mě zaujalo, že zapisují modely a analytickou dokumentaci kódem a verzují do GITu jako kód.
+</p><pre><code class="java">Workspace workspace = new Workspace("techtribes.je", "This is a model...");
+Model model = workspace.getModel();
+SoftwareSystem techTribes = model.addSoftwareSystem("techtribes.je", "techtribes.je is the only way...");
+SoftwareSystem twitter = model.addSoftwareSystem("Twitter", "twitter.com");
+techTribes.uses(twitter, "Gets profile information and tweets from.");
+SoftwareSystem gitHub = model.addSoftwareSystem("GitHub", "github.com");
+techTribes.uses(gitHub, "Gets information about public code repositories from.");
+SoftwareSystem blogs = model.addSoftwareSystem("Blogs", "RSS and Atom feeds");
+techTribes.uses(blogs, "Gets content using RSS and Atom feeds from.");
+</code></pre><p>Na zmiňovaný <a href="https://structurizr.com/" target="_blank">Structurizr a C4 framework</a> se určitě při příští analýze podívám. Vy se zatím podívejte na <a href="https://jfojtl.github.io/JOS2016/" target="_blank">materiály z jeho přednášky</a>.
+</p><p>V rámci časté digitalizace dokumentů používá aplikace <a href="https://play.google.com/store/apps/details?id=com.microsoft.office.officelens&amp;hl=cs" target="_blank">Office Lens</a>, která detekuje hrany papíru a upraví náklon a kontrast obrazu do podoby srovnatelné se skenováním. Funguje výborně i při focení slajdů z projektoru.
+</p><div class="row"><div class="col-centered"><img src="http://s.4pda.to/vePhJMEGBoeQGKQG4uKcepIHQm.png"/></div></div><h4>Jaroslav Holaň - Techniky práce</h4><p><a href="https://twitter.com/jaroslavholan" target="_blank"><strong>Jaroslav Holaň</strong></a> mluvil o technikách práce a jak je možné dosáhnout hlubšího soustředění
+a tím vyšší efektivity.
+</p><p>Doporučoval k přečtení 3 knihy:
+</p><ul><li><a href="http://www.databazeknih.cz/knihy/hluboka-prace-310127" target="_blank">Hluboká práce</a> (Cal Newport) - hluboká práce je schopnost soustředit se bez rozptylování na kognitivně náročné úkoly.
+Proč se o to zajímat vystihuje v přednášce zmíněný vzorec: <strong>kvalitní pracovní výstup = strávený čas x intenzita soustředění</strong>.
+</li><li><a href="http://www.databazeknih.cz/knihy/inovatori-254702" target="_blank">Inovátoři</a> (Walter Isaacson) - o lidech kteří dokázali přijít s něčím úplně novým co v oboru ještě nikoho nenapadlo. Vyzdvihována byla myšlenka při práci se setkávat s lidmi z jiných oborů.
+To mě vedlo k zamyšlení, že mít kancelář kde jsem sám a mám klid je sice príma, ale že by nebylo špatné aspoň občas navštívit nějaký cowork.
+</li><li><a href="http://www.databazeknih.cz/knihy/inovatori-254702" target="_blank">The Zen Programmer</a> (Christian Grobmeier) - jak být lepším programátorem díky nalezení klidu.
+Vychází z autorova článku <a href="https://www.grobmeier.de/the-10-rules-of-a-zen-programmer-03022012.html" target="_blank">The 10 rules of a zen programmer</a>.
+</li></ul><p><a href="https://docs.google.com/presentation/d/1c10bSxHbnOnuUXK4c8fPUc7KVOewJHQ15UkJIQA3xuE/edit" target="_blank">Slajdy</a> z jeho povídání bohužel neobsahují návody na karetní triky, které předváděl večer.
+</p><div class="row"><div class="col-centered"><blockquote data-lang="cs" class="twitter-tweet"><p lang="und" dir="ltr">Java magic na <a href="https://twitter.com/hashtag/joscz2016?src=hash">#joscz2016</a> <a href="https://t.co/kB6KWz9rsT">pic.twitter.com/kB6KWz9rsT</a></p>&mdash; Víťa Plšek (@VitaPlsek) <a href="https://twitter.com/VitaPlsek/status/784869373227966464">8. října 2016</a></p></blockquote></div></div><script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"></script><h4>David Ondřich - ViM 8.0</h4><p><a href="http://twitter.com/dondrich" target="_blank"><strong>David Ondřich</strong></a> mluvil o novinkách v editoru VIM. Materiály z přednášky jsou k dispozici <a href="http://www.slideshare.net/dondrich/jopenspacecz-2016-vim-80" target="_blank">zde</a>.
+Osobně jsem příznivce těžkotonážních IDE typu <a href="https://www.jetbrains.com/idea/" target="_blank" title="IntelliJ Idea">IntelliJ</a> a ve VIMu umím použít možná tak <strong>:wq</strong>,
+proto mě zaujala možnost zúčastnit se workshopu a naučit se něco víc pro potřeby editace čehokoli na serveru,
+k čemuž bych se doma sám spíš neodhodlal.
+</p><p>Zaujalo mne, že VIMu je <strong>CharityWare</strong>, jeho autor <a href="https://en.wikipedia.org/wiki/Bram_Moolenaar" target="_blank">Bram Moolenaar</a>
+posílá veškeré prostředky od přispěvatelů organizaci <a href="http://iccf-holland.org/" target="_blank">ICCF Holland</a> pomáhající dětem v Ugandě.
+
+</p><p>Workshop se nakonec z časových důvodů nekonal, ale dostal jsem tipy na co se podívat a tak slibuju, že se do příště naučím aspoň upravit ten konfigurák.
+Navíc kde je VIM, je automaticky i <a href="http://linuxcommand.org/man_pages/vimtutor1.html" target="_blank"><strong>vimtutor</strong></a>, interaktivní kurz postavený nad obyčejným textovým souborem. K dispozici je i v češtině.
+</p><div class="row"><div class="col-centered-big"><img src="/images/2016-10-29/vimtutor.png" alt="vimtutor"/></div></div><h4>Ondřej Havel - Integrace JIRA s bitbucket</h4><p><a href="https://www.linkedin.com/in/havelondrej" target="_blank"><strong>Ondřej Havel</strong></a> ukazoval jakým způsobem
+používá <a href="https://www.atlassian.com/software/jira/" target="_blank">Jiru</a> v kombinaci s <a href="https://bitbucket.org" target="_blank">Bitbucketem</a>.
+Obojí znám, ale nikdy mě nenapadlo použít Jiru pro vlastní projekty.
+Možná neoprávněně, pro malé teamy je <a href="https://www.atlassian.com/software/jira/pricing?tab=host-on-your-server" target="_blank">nabízená za takřka charitativní cenu $10</a>,
+navíc celá částka na <a href="https://www.atlassian.com/company/foundation.html" target="_blank">charitu také jde</a>.
+
+
+
+</p><h3>Bezpečnost</h3><h4>Katka Novotná - XML eXternal Entity XXE útok</h4><p><a href="http://twitter.com/lyrisha" target="_blank"><strong>Katka Novotná</strong></a> ukazovala jak může proběhnout
+<a href="https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing" target="_blank">XML eXternal Entity (XXE) útok</a>, a může tak dojít k získání obsahu souboru z disku. Principem útoku je,
+nahrazení reference na externí entitu obsahem externího souboru.
+</p><pre><code class="xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE echo[
+  &lt;!ENTITY xxe SYSTEM &quot;/path/file&quot;&gt;
+]&gt;
+&lt;echo&gt;&amp;xxe;&lt;/echo&gt;
+</code></pre><p>Řešením by mělo být zakázat externí entity a deklaraci DTD v uživatelských xml datech a validovat xml vstup proti statickým DTD, tady jsou <a href="https://rawgit.com/kanovotn/presentations/master/jopenspace2016/index.html" target="_blank">materiály z přednášky</a>
+</p><h4>Novoj Honza Novotný - Když vám rozbíjejí hračky</h4><p>Slyšel jsem <a href="https://kafemlejnek.tv/dil-14-hackovani-web-aplikaci/" target="_blank">14. díl Kafemlejnek.tv - hackování web aplikací</a>, tak jsem tušil o čem to bude. <a href="http://blog.novoj.net" target="_blank"><strong>Novoj Honza Novotný</strong></a> měl v ukázkách ještě několik dalších příkladů,
+z kterých jsem si říkal že to by mě nenapadlo. Taky bych řekl, že <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" target="_blank">Cross Site Scripting</a> zná sice každý, ale
+<a href="https://content-security-policy.com/" target="_blank">Contact Security Policy</a> už každý ne.
+</p><p>Útok <a href="https://www.owasp.org/index.php/Regular_expression_Denial_of_Service_-_ReDoS" target="_blank">Regular expression Denial of Service</a> jsem neznal.
+Pokud si to chcete vyzkoušet, můžete si zabít prohlížeč, zkopírováním následujícího kódu do konzole.
+</p><pre><code class="javascript">var evilRegEx = /^([a-zA-Z0-9])(([\-.]|[_]+)?([a-zA-Z0-9]+))*(@){1}[a-z0-9]+[.]{1}(([a-z]{2,3})|([a-z]{2,3}[.]{1}[a-z]{2,3}))$/
+evilRegEx.test("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!");
+</code></pre><p>Osobně taky regexům nevládnu tak jak bych chtěl, mám proto rád nástroj <a href="https://regex101.com/r/6InMCg/1" target="_blank">Regex101</a>, což je REPL pro regulární výrazy s podrobným rozborem co která část dělá.
+</p><p><a href="https://novoj.github.io/reveal.js/jopenspace2016.html" target="_blank">Materiály z povídání</a> odkazují popisy a ukázky dalších útoků.
+Odkazovaný je i záznam <a href="https://kafemlejnek.tv/kafemlejnek-akademie-4-zakladni-techniky-hackovani-roman-kummel/" target="_blank">Kafemlejnek Akademie 4</a>,
+kde expert v oblasti webové bezpečnosti <a href="https://www.hacker-academy.cz/lektori" target="_blank">Roman Kümmel</a> ukazuje základní techniky hackování.
+
+</p><div class="row"><div class="col-centered-big"><div class="videoWrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/Td0LeWtNSVI" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div></div></div><h4>Jan Horalík - Burb Suite</h4><p><a href="http://www.slideshare.net/JanHoralk/burp-suite-jopenspace-2016" target="_blank"><strong>Jan Horalík</strong></a>
+ukazoval použití nástroje pro testování bezpečnosti webových aplikací <a href="https://portswigger.net/burp/" target="_blank">Burp suite</a> na projektu
+<a href="https://github.com/WebGoat/WebGoat/wiki" target="_blank">OWASP WebGoat</a>.
+</p><p>WebGoat je cíleně nezabezpečená webová aplikace napsaná v Javě, navržená pro výuku bezpečnosti a ukázku typických problémů.
+<a href="http://webgoat-war.s3-website-us-east-1.amazonaws.com/" target="_blank">Odtud</a> stáhnete poslední spustitelný jar
+(<strong>webgoat-container-7.****-war-exec.jar</strong>). Pomocí <strong>java -jar</strong> spustíte a na <strong>localhost:8080/WebGoat</strong> už můžete úřadovat.
+</p><div class="row"><div class="col-centered-big"><img src="/images/2016-10-29/webgoat.png"/></div></div><p>Na WebGoat se určitě blíže podívám a taky velmi vážně uvažuju o zmiňovaném <a href="https://www.hacker-academy.cz/seminare/hacking-webovych-aplikaci" target="_blank">školení bezpečnosti od Romana Kümmela</a>
+</p><h3>Backend</h3><h4>Lukáš Vlček - microservice for Java Developers</h4><p>Když dělám pro aplikaci i backend, používám Spring a výslednou aplikaci nasazuju jako jar s embedovanou Jetty, proto mne zaujalo,
+když <a href="https://twitter.com/lukasvlcek" target="_blank"><strong>Lukáš Vlček</strong></a> prezentoval,
+že obdobným způsobem můžu embedovat i J2EE aplikační server.
+</p><p>Ve své přednášce představoval <a href="http://wildfly-swarm.io/" target="_blank">Wildfly Swarm</a>, na kterém pracují v RedHatu.
+Jedná se o aplikační server <a href="http://wildfly.org/" target="_blank">Wildfly</a> rozebraný na jednotlivé součásti,
+které můžete podle potřeby sestavit je do archivu spustitelného pomocí <strong>java -jar</strong>.
+Platformu aplikačního serveru si tedy nesou s sebou.
+</p><h4>Petr Fershmann - REST API je mrtvé, ať žije GraphQL</h4><p><a href="@fersman" target="_blank"><strong>Petr Fershmann</strong></a> povídal zkrácenou variantu přednášky,
+jejíž celé znění si můžete i se slajdy <a href="http://slideslive.com/38896247/rest-api-je-mrtve-at-zije-graphql-a-relay" target="_blank">prohlédnout zde</a>.
+</p><p>Nosnou myšlenkou je, že internet je pomalý a velké latence se jen tak nezbavíme.
+Aplikace často běží v cloudu mimo zemi uživatele, latence pak může být opravdu velká a nedokážeme ji ovlivnit.
+</p><div class="row"><div class="col-centered-big"><img src="/images/2016-10-29/latence.png"/></div></div><p>Nejen proto má určitě smysl zabývat se tím, jak chování aplikace urychlit.
+Souhlasím s ním, že výrazným posunem je příklon k SPA aplikacím,
+tím se omezí komunikace se serverem jen na případy, kdy potřebuju načíst nebo uložit data.
+Většinou se pro komunikaci mezi backendem a frontendem používá REST, často je komunikace stavěná přímo na míru frontendu.
+Pokud je ale aplikace stavěna tak, že jsou komponenty skládány dynamicky, může se stát, že se nevyhnete více požadavkům
+na získání dat jednoho případu užití.
+</p><p><a href="http://graphql.org/" target="_blank">GraphQL</a> cílí na zefektivnění této komunikace.
+Je to dotazovací jazyk pro komunikaci s API, umožní dotázat se nejen na entity, ale i na konkrétní atributy.
+Frontend tedy řídí co bude načteno podle potřeby, přijde mi ale, že GraphQL to dělá rozumnějším způsobem než se o to snažila
+<a href="www.odata.org" target="_blank">OData</a>.
+</p><div class="row"><div class="col-sm-6"><p><strong>Dotaz na server</strong></p><pre><code class="json">{
+  hero {
+    name
+    height
+    mass
+    friends {
+      name
+    }
+  }
+}
+</code></pre></div><div class="col-sm-6"><p><strong>Odpověď</strong></p><pre><code class="json">{
+  "hero": {
+    "name": "Luke Skywalker",
+    "height": 1.72,
+    "mass": 77,
+    "friends": [
+      { "name": "Obi-Wan Kenobi" },
+      { "name": "R2-D2" },
+      { "name": "Han Solo" },
+      { "name": "Leia Organa" }
+    ]
+  }
+}
+</code></pre></div></div><p>Určitě bych se chtěl podívat na možnosti implementaci GraphQL na straně serveru v existujících Java aplikacích, které doposud využívali REST.
+Existuje implementace v Javě - <a href="https://github.com/graphql-java/graphql-java" target="_blank">graphql-java</a>, tu se chystám vyzkoušet.
+Pokud s ní a se začleněním do stávající aplikace máte zkušenosti, ozvěte se mi.
+</p><h3>Frontend</h3><p>Přestože <strong>J</strong> v názvu nekonference dnes už neznamená Java, přesto jsem měl pocit že backendisté převládají,
+ale i na frontend se dostalo, v tu chvíli znamenalo <strong>J</strong> rozhodně Javascript.
+</p><h4>Jakub Kočí ClojureScript</h4><p><a href="https://twitter.com/jakubkoci" target="_blank"><strong>Jakub Kočí</strong></a>
+povídal o <a href="http://clojurescript.org/" target="_blank">ClojureScriptu</a>,
+jde o kompilátor jazyka Clojure do JavaScriptu.
+<a href="http://clojure.org/" target="_blank">Clojure</a> je dialekt Lispu, dynamický funkcionální jazyk s jednoduchou syntaxí, který může běžet nad Java Virtual Machine.
+</p><div class="row"><div class="col-sm-6"><strong>Syntaxe</strong><pre><code class="xml">;; identifier
+(def x 1)  ;; => 2
+
+;; functions
+(+ 1 2 3)  ;; => 6
+
+;; function declaration
+(defn sum [a b c]
+  (+abc))
+
+;; function call
+(sum 1 2 3)  ;; => 6
+</code></pre></div><div class="col-sm-6"><strong>Datové struktury</strong><pre><code class="xml">;; list
+(1 2 3 4)
+
+;; vector
+[1 2 3 4]
+
+;; map
+{:a 1 :b 2 :c 3 :d 4}
+
+;; set
+&#35;{1 2 3 :foo :bar}
+</code></pre></div></div><p>ClojureScript umožňuje využívat JavaScript i manipulovat s domem, jeho ekosystém není sice tak bohatý jako JavaScriptu,
+ale najdete vše potřebné pro vývoj webových aplikací, podívejte se na odkazy v <a href="http://www.slideshare.net/jakubkoci/clojurescript-66922819" target="_blank">materiálech z přednášky</a>,
+na odkazované video <a href="https://youtu.be/gsffg5xxFQI" target="_blank">ClojureScript for Skeptics na YouTube</a>,
+případně si jej můžete ClojureScript rovnou <a href="http://clojurescript.io/" target="_blank">vyzkoušet online</a>.
+
+</p><h4>Tomáš Látal - Bobril</h4><p><a href="@tomaslatal" target="_blank"><strong>Tomáš Látal</strong></a> mluvil o frontendovém frameworku <a href="https://github.com/Bobris/Bobril" target="_blank">Bobril</a>,
+který vyvíjejí a používají ve firmě. Bobril je komponentově orientovaný framework inspirovaný myšlenkami knihoven <a href="http://mithril.js.org/" target="_blank">Mithril</a> a <a href="https://facebook.github.io/react/" target="_blank">React</a>.
+Klade velký důraz na rychlost, paměťovou nenáročnost a výslednou velikost aplikace, cílí na vývoj mobilních aplikací a přináší množství zajímavých vlastností.
+Kde ale bohužel ztrácí je dokumentace a komunita.
+</p><p>Bobril je psán v Typescriptu a na to, že není příliš známý si troufnu říct, že s sebou přináší poměrně široký ekosystém:
+</p><ul><li>vlastní sofistikovaný devsctack - <a href="https://github.com/Bobris/bobril-build" target="_blank">bobril-build</a></li><li>podporu material designu - <a href="https://github.com/bobril/bobril-m" target="_blank">bobril-m</a></li><li>podporu bootstrap - <a href="http://keeema.github.io/bobrilstrap/" target="_blank">bobrilstrap</a></li><li>implementaci FLUX - <a href="https://github.com/karelsteinmetz/bobflux" target="_blank">bobflux</a></li><li>variaci na React Native - <a href="https://github.com/bobril/bobriln" target="_blank">bobril native</a></li><li>možnost začlenit bobril do AngularJS - <a href="https://github.com/karasek/ngBobril" target="_blank">ngBobril</a></li></ul><p>Pokud Je na Vás React velký a zaujal Vám Mithril, jen byste kolem něj chtěli mít postavený stack, podívejte se na Bobril.
+</p><div class="row"><div class="col-centered-big"><div class="videoWrapper"><iframe width="560" height="315" src="https://www.youtube.com/embed/8p27FLAneiM" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div></div></div><h4>Tomáš Bambas - Proč (ne)chceš použít Vaadin pro vývoj webové aplikace</h4><p><a href="https://www.linkedin.com/in/bambastomas" target="_blank">Tomáš Bambas</a> povídal o tom, kde je vhodné a kde ne použít framework <a href="https://vaadin.com" target="_blank">Vaadin</a>.
+Vaadin je komponentově orientovaný framework pro psaní webových aplikací v Javě.
+Cílí na odstínění vývojářů od Javascriptu a nabízí znovupoužitelnost kódu.
+</p><p>Potěšilo mě, že Tomáš mluvil o Javascriptu na frontendu a psaní Single page aplikací v současnosti jako o konvenčním řešení
+a o Vaadinu jako o alternativě, ještě loni se to bralo spíš naopak.
+
+</p><div class="row"><div class="col-centered-big"><img src="/images/2016-10-29/vaadim-diagram.png"/></div></div><p>Vaadin nechává veškerou prezentační vrstvu a stav modelu na serveru a všechno je tak Java programátorům dobře dostupné.
+Na druhou stranu klienta bere jen jako zobrazovací zařízení a klientská část tak musí kontaktovat server kdykoli uživatel provede interakci.
+
+V <a href="http://www.slideshare.net/TomBambas/pro-nechce-pout-vaadin-pro-vvoj-webov-aplikace" target="_blank">přednášce</a> byly zmíněny jako problematické aplikace,
+kde je aktivní velký počet uživatelů naráz, případně aplikace, které mají fungovat s malou latencí případně offline.
+</p><p>Mimo tyto oblasti může být dle mého jeho použití pro čistokrevného Javistu radostí.
+</p><h4>David Voňka - Kotlin 4ever</h4><p><a href="https://twitter.com/dvonka" target="_blank">David Voňka</a> cílil taky na odstínění a znovupoužitelnost kódu,
+ale chtěl jít ještě dál, využít jeden jazyk úplně na všechno, na komunikaci s databází, na psaní šablon i definování CSS.
+
+Šel dokonce tak daleko, že říkal že <strong>Javascript v ČR nechceme</strong> a proto zvolil jazyk <a href="https://kotlinlang.org/" target="_blank">Kotlin</a> a knihovny z jeho ekosystému.
+
+Pro přístup k databázi existuje knihovna <a href="https://github.com/JetBrains/Exposed" target="_blank">Exposed</a>,
+pro psaní HTML a CSS <a href="http://karaframework.com/" target="_blank">framework Kara</a>, příklady jsou k vidění v <a href="https://docs.google.com/presentation/d/1tOuG1yFyqkgvJaNb4JnwTUOcWeUkRQTy7bemvgeRsUo/edit?usp=sharing" target="_blank">materiálech</a>.
+</p><p>Přístup je to určitě zajímavý a příznivce zřejmě najde, bohužel jsem neměl možnost prodiskutovat důkladněji motivaci, snad k tomu budu mít ještě příležitost.
+Dřív jsem se o znovupoužitelnost a sjednocení jazyka zajímal taky, dneska se ale na frontend a backend dívám jako na zcela oddělené aplikace.
+Občas ale cítím, že občas by se hodilo sdílet validace, nebo definici view modelu.
+Zkusím tuto otázku opět otevřít a zamyslet se, jak by to bylo možné v kombinaci Java / JavaScript řešit.
+</p><h4>Víťa Plšek - Angular 2</h4><p>Já jsem si dovolil krátký vhled, co přináší nedávno vydaný Angular 2 a kde vidím jeho místo.
+Napíšu na toto téma celý článek, zatím můžu nabídnout <a href="http://www.angular.cz/jopenspace-2016" target="_blank">alespoň materiály</a>.
+</p><div class="row"><div class="col-centered-big"><div class="videoWrapper"><iframe src="//www.slideshare.net/slideshow/embed_code/key/nccaWbuReEmvDF" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen="allowfullscreen"></iframe></div></div></div><h3>Kam dál</h3><p>Záznamy z přednášek se brzy objeví na webu <a href="http://jopenspace.cz" target="_blank">jOpenspace.cz</a>, sledujte <a href="https://twitter.com/jopenspace" target="_blank">@jOpenSpace na twitteru</a>, přečtěte si články i od ostatních a příště pojeďte taky, stojí to rozhodně zato.
+</p><ul><li><a href="http://www.jaroslavholan.com/2016/10/vyvojari-sobe-jopenspace.html" target="_blank">Jaroslav Holaň - Vývojáři sobě - jOpenSpace</a></li><li><a href="http://javlog.cacek.cz/2016/10/jopenspace-2016-dobijecka-baterek.html" target="_blank">Josef Cacek - jOpenSpace.cz 2016 - dobíječka baterek</a></li><li><a href="https://www.ysoft.com/en/blog/y-soft/r-d-stays-active-in-the-tech-community-beer-invol" target="_blank">Filip Štaffa - R&D stays active in the tech community: beer involved</a></li><li><a href="jOpenSpace 2016 aneb jak se „ne-konferencovalo“" target="_blank">NG Forrest - jOpenSpace 2016 aneb jak se „ne-konferencovalo“</a></li></ul><hr/><div class="btn-toolbar">&nbsp<span class="pull-right"><a href="/blog/2016-07-14_cesky-slovnik-pro-produkty-jetbrains.html" class="btn btn-default">Český slovník pro produkty JetBrains &rarr;</a></span></div><hr/><h4>Pokud Vás článek zaujal, dejte o něm vědět ostatním</h4><ul class="share-buttons"><li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.vitaplsek.cz/blog/2016-10-29_dozvuky-jopenspace-2016.html &amp;t=Dozvuky%20jOpenSpace%20-%202016" title="Sdílet na Facebooku" target="_blank"><img alt="Sdílet na Facebooku" src="/images/social_flat_rounded_rects_svg/Facebook.svg"/></a></li><li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-10-29_dozvuky-jopenspace-2016.html&amp;text=Dozvuky%20jOpenSpace%20-%202016%20%3A%20http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-10-29_dozvuky-jopenspace-2016.html%20%40VitaPlsek" target="_blank" title="Tweet"><img alt="Sdílet na Twitteru" src="/images/social_flat_rounded_rects_svg/Twitter.svg"/></a></li><li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-10-29_dozvuky-jopenspace-2016.html" target="_blank" title="Sdílet na Google+"><img alt="Sdílet na Google+" src="/images/social_flat_rounded_rects_svg/Google+.svg"/></a></li><li><a href="http://www.linkedin.com/shareArticle?mini=true&quot; + &amp;url=http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-10-29_dozvuky-jopenspace-2016.html&amp;title=Dozvuky%20jOpenSpace%20-%202016&amp;summary=Letos%20konan%C3%A1%20nekonference%20jOpenspace%202016%20byla%20velmi%20poveden%C3%A1%2C%20sepsal%20jsem%2C%20co%20mne%20nejv%C3%ADc%20zaujalo%20a%20na%20co%20m%C3%A1m%20v%20pl%C3%A1nu%20se%20v%20dohlden%C3%A9%20dob%C4%9B%20pod%C3%ADvat.&amp;sourcehttp%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-10-29_dozvuky-jopenspace-2016.html" target="_blank" title="Sdílet na LinkedIn"><img alt="Sdílet na LinkedIn" src="/images/social_flat_rounded_rects_svg/LinkedIn.svg"/></a></li><li><a href="mailto:?subject=Dozvuky%20jOpenSpace%20-%202016&amp;body=Letos%20konan%C3%A1%20nekonference%20jOpenspace%202016%20byla%20velmi%20poveden%C3%A1%2C%20sepsal%20jsem%2C%20co%20mne%20nejv%C3%ADc%20zaujalo%20a%20na%20co%20m%C3%A1m%20v%20pl%C3%A1nu%20se%20v%20dohlden%C3%A9%20dob%C4%9B%20pod%C3%ADvat.%0D%0A%0D%0Ahttp%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-10-29_dozvuky-jopenspace-2016.html" target="_blank" title="Poslat mailem"><img alt="Poslat mailem" src="/images/social_flat_rounded_rects_svg/Email.svg"/></a></li></ul><hr/><div id="disqus_thread"></div><script>/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function() {
+  this.page.url = article.url;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = article.template; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = '//vitaplsek.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script><hr/><p class="text-center">&copy; Víťa Plšek</p></div></div></body></html>

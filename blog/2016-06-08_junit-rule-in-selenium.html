@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs" xmlns:og="http://opengraphprotocol.org/schema/"><head><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/rainbow.min.css"/><link href="/css/style.css" rel="stylesheet"/><title>Využití JUnit Rule v Selenium testu - Víťa Plšek</title><meta name="description" content="Nedávno jsem při psaní E2E end testů v JUnit pomocí Selenia řešil, jak před testy spustit a po testech zastavit a pak jsem si vzpomněl na Rule."/><meta property="og:site_name" content="VitaPlsek.cz"/><meta property="og:type" content="article"/><meta property="og:description" content="Nedávno jsem při psaní E2E end testů v JUnit pomocí Selenia řešil, jak před testy spustit a po testech zastavit a pak jsem si vzpomněl na Rule."/><meta property="article:author" content="http://www.vitaplsek.cz"/><meta property="og:image" content="http://www.vitaplsek.cz/images/vitaplsek.jpg"/><meta property="og:url" content="http://www.vitaplsek.cz/blog/2016-06-08_junit-rule-in-selenium.html"/><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script><script>hljs.initHighlightingOnLoad()</script></head><body><div class="article-panel"><div class="panel-body"><div class="article-header"><h2>Víťa Plšek - Zápisky Java / Script vývojáře</h2><a href="/" class="btn btn-default">&larr; Zpět na úvodní stranu</a></div></div></div><div class="article-panel"><div class="panel-body"><h1>Využití JUnit Rule v Selenium testu</h1><p>8. června 2016</p><p>Nedávno jsem při psaní E2E end testů v JUnit pomocí Selenia řešil, jak před testy spustit a po testech zastavit <strong>WebDriver</strong>.
+</p><p>První řešení, které zřejmě většinu z Vás napadne může vypadat takto:
+</p><pre><code class="java">public class StackOverflowTest {
+
+  private WebDriver driver;
+
+  @Before
+  public void setUp() {
+    driver = new ChromeDriver();
+  }
+
+  @After
+  public void tearDown() {
+    driver.quit();
+  }
+
+  @Test
+  public void stackOverflowShouldWork() throws Exception {
+    driver.get("http://www.stackoverflow.com");
+
+    assertThat(driver.getTitle()).isEqualTo("Stack Overflow");
+  }
+}
+</code></pre><p>Pokud ale takovýchto testovacích tříd bude víc, co většinou uděláte? Smíříte se s duplicitou? To si pravděpodobně
+rozmyslíte hned jakmile budete chtít použít nějaký driver manager, konfigurovat spouštěný browser, nebo řešit vzádlené spuštění.
+
+Jak to tedy můžete řešit? Zapouzdření do pomocné třídy? Využití dědičnosti? To určitě fungovat bude,
+ale zakrývá to skutečnou podstatu problému. A tou je, potřeba učinit obsah <strong>@Before</strong> a <strong>@After</strong> do znovupoužitelným.
+</p><p>K tomu Vám v <strong>JUnit</strong> pomůže <strong>Rule</strong>. Přesněji, abstraktní třída <strong><a href="https://github.com/junit-team/junit4/wiki/Rules#externalresource-rules">ExternalResource</a></strong>, která po zdědění umožní určit,
+co se má vykonat před či po testu či testovací třídě. Teorii okolo konceptu <strong>Rule</strong> si přečtete
+v <a href="https://github.com/junit-team/junit4/wiki/Rules">dokumentaci</a>, já Vám to zatím ukážu v kódu, jste přece programátoři.
+</p><p>Následující kód tedy ukazuje třídu <strong>WebDriverRule</strong>, která zapouzdří vytvoření, ukončení a možnost získat <strong>Webdriver</strong>.
+</p><pre><code class="java">public class WebDriverRule extends ExternalResource{
+
+  private WebDriver driver;
+
+  @Override
+  protected void before() throws Throwable {
+     ChromeDriverManager.getInstance().setup();
+     driver = new ChromeDriver();
+  }
+
+  @Override
+  protected void after() {
+    driver.quit();
+  }
+
+  public WebDriver getDriver() {
+    return driver;
+  }
+}
+</code></pre><p class="note">Pokud by Vás zajímalo co je ten <strong>ChromeDriverManager</strong>, podívejte se <a href="https://github.com/bonigarcia/webdrivermanager">tady</a>.</p><p>Použití <strong>WebDriverRule</strong> v testu pak vypadá takto
+</p><pre><code class="java">@Rule
+public WebDriverRule webDriverRule = new WebDriverRule();
+private WebDriver driver;
+
+@Before
+public void setUp() throws Exception {
+  driver = webDriverRule.getDriver();
+}
+</code></pre><p>V metodě <strong>setUp</strong> zůstává jen získání driveru, o jeho vytvoření před každým testem a ukončení po každém testu řeší <strong>Rule</strong>.
+</p><p>Pokud byste preferovali spíše spuštění prohlížeče pro celou třídu, stačí nahradit anotaci <strong>@Rule</strong> anotací <strong>@ClassRule</strong>.</p><hr/><div class="btn-toolbar"><span><a href="/blog/2016-07-02_upload-file-with-protractor.html" class="btn btn-default">&larr; Upload souboru pomocí protractoru</a></span>&nbsp</div><hr/><h4>Pokud Vás článek zaujal, dejte o něm vědět ostatním</h4><ul class="share-buttons"><li><a href="https://www.facebook.com/sharer/sharer.php?u=http://www.vitaplsek.cz/blog/2016-06-08_junit-rule-in-selenium.html &amp;t=Vyu%C5%BEit%C3%AD%20JUnit%20Rule%20v%20Selenium%20testu" title="Sdílet na Facebooku" target="_blank"><img alt="Sdílet na Facebooku" src="/images/social_flat_rounded_rects_svg/Facebook.svg"/></a></li><li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-06-08_junit-rule-in-selenium.html&amp;text=Vyu%C5%BEit%C3%AD%20JUnit%20Rule%20v%20Selenium%20testu%20%3A%20http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-06-08_junit-rule-in-selenium.html%20%40VitaPlsek" target="_blank" title="Tweet"><img alt="Sdílet na Twitteru" src="/images/social_flat_rounded_rects_svg/Twitter.svg"/></a></li><li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-06-08_junit-rule-in-selenium.html" target="_blank" title="Sdílet na Google+"><img alt="Sdílet na Google+" src="/images/social_flat_rounded_rects_svg/Google+.svg"/></a></li><li><a href="http://www.linkedin.com/shareArticle?mini=true&quot; + &amp;url=http%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-06-08_junit-rule-in-selenium.html&amp;title=Vyu%C5%BEit%C3%AD%20JUnit%20Rule%20v%20Selenium%20testu&amp;summary=Ned%C3%A1vno%20jsem%20p%C5%99i%20psan%C3%AD%20E2E%20end%20test%C5%AF%20v%20JUnit%20pomoc%C3%AD%20Selenia%20%C5%99e%C5%A1il%2C%20jak%20p%C5%99ed%20testy%20spustit%20a%20po%20testech%20zastavit%20a%20pak%20jsem%20si%20vzpomn%C4%9Bl%20na%20Rule.&amp;sourcehttp%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-06-08_junit-rule-in-selenium.html" target="_blank" title="Sdílet na LinkedIn"><img alt="Sdílet na LinkedIn" src="/images/social_flat_rounded_rects_svg/LinkedIn.svg"/></a></li><li><a href="mailto:?subject=Vyu%C5%BEit%C3%AD%20JUnit%20Rule%20v%20Selenium%20testu&amp;body=Ned%C3%A1vno%20jsem%20p%C5%99i%20psan%C3%AD%20E2E%20end%20test%C5%AF%20v%20JUnit%20pomoc%C3%AD%20Selenia%20%C5%99e%C5%A1il%2C%20jak%20p%C5%99ed%20testy%20spustit%20a%20po%20testech%20zastavit%20a%20pak%20jsem%20si%20vzpomn%C4%9Bl%20na%20Rule.%0D%0A%0D%0Ahttp%3A%2F%2Fwww.vitaplsek.cz%2Fblog%2F2016-06-08_junit-rule-in-selenium.html" target="_blank" title="Poslat mailem"><img alt="Poslat mailem" src="/images/social_flat_rounded_rects_svg/Email.svg"/></a></li></ul><hr/><div id="disqus_thread"></div><script>/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+var disqus_config = function() {
+  this.page.url = article.url;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = article.template; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = '//vitaplsek.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script><hr/><p class="text-center">&copy; Víťa Plšek</p></div></div></body></html>
